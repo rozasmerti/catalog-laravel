@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Http\Responses\ProductResponse;
+use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
@@ -20,12 +22,18 @@ class CatalogController extends Controller
      *       )
      *     )
      */
-   public function index() {
+   public function index(Request $request) {
 
-       $products = Item::with(['propertyValues'])->paginate(40);
-       $response = [
-           'products' => $products
-       ];
-       return response()->json($response);
+
+       $products = Item::with(['propertyValues']);
+
+       if ($request->input('properties'))
+       {
+           
+       }
+
+           $products->paginate(40);
+
+       return new ProductResponse($products);
    }
 }

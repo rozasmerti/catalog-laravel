@@ -5,4 +5,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/catalog', 'CatalogController@index')->name('catalog.index');
+Route::get('/', 'PageController@catalog')->name('catalog.index');
+Route::get('/products', 'CatalogController@index')->name('products.index');

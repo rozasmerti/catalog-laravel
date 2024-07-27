@@ -4,7 +4,7 @@
         "title": "Laravel OpenApi Demo Documentation",
         "description": "L5 Swagger OpenApi description",
         "contact": {
-            "email": "admin@admin.com"
+            "email": "rozasmerti@ya.ru"
         },
         "license": {
             "name": "Apache 2.0",
@@ -19,12 +19,27 @@
         }
     ],
     "paths": {
+        "products": {
+            "get": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Get list of products",
+                "description": "Returns list of product",
+                "operationId": "getProducts",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
         "/catalog": {
             "get": {
                 "tags": [
                     "Projects"
                 ],
-                "summary": "Get list of catalog",
+                "summary": "Get page catalog",
                 "description": "Returns list of catalog",
                 "operationId": "getCatalog",
                 "responses": {

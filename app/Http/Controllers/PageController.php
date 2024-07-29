@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
+
 class PageController extends Controller
 {
     /**
@@ -27,6 +29,6 @@ class PageController extends Controller
      *     )
      */
     public function catalog() {
-        return view('catalog');
+        return view('catalog', ['products' => Item::with(['propertyValues', 'propertyValues.property'])->paginate()]);
     }
 }

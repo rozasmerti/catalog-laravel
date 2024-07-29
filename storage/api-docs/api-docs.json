@@ -14,19 +14,54 @@
     },
     "servers": [
         {
-            "url": "http://my-default-host.com",
+            "url": "http://127.0.0.1:8282",
             "description": "Demo API Server"
         }
     ],
     "paths": {
-        "products": {
+        "/products": {
             "get": {
                 "tags": [
-                    "Projects"
+                    "Products"
                 ],
                 "summary": "Get list of products",
                 "description": "Returns list of product",
                 "operationId": "getProducts",
+                "parameters": [
+                    {
+                        "name": "properties[color][]",
+                        "in": "query",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "example": "зеленый"
+                            }
+                        }
+                    },
+                    {
+                        "name": "properties[size][]",
+                        "in": "query",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "example": "200"
+                            }
+                        }
+                    },
+                    {
+                        "name": "properties[brand][]",
+                        "in": "query",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "example": "Philips"
+                            }
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -64,6 +99,10 @@
         {
             "name": "Projects",
             "description": "API Endpoints of Projects"
+        },
+        {
+            "name": "Products",
+            "description": "Products"
         }
     ]
 }

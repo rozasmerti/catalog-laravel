@@ -13,6 +13,7 @@ Example of simple products list with filters
 
  - use sail, containers with redis, laravel app, pgsql
  - <a href="/api/documentation">Swagger api</a>
+ - /products?properties[color][]=зеленый&properties[color][]=черный&properties[size][]=200&properties[brand]=Philips
 
 ## Start instructions:
 - copy .env.example to .env

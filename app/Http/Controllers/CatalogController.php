@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Http\Responses\ProductResponse;
-use App\Models\PropertyValue;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\ProductsRequest;
 
 class CatalogController extends Controller
 {
@@ -48,14 +50,16 @@ class CatalogController extends Controller
      *       )
      *     )
      */
-   public function index(Request $request) {
+   public function index(ProductsRequest $request): ProductResponse {
 
-
+       $validatedData = $request->validated();
        $products = Item::with(['propertyValues', 'propertyValues.property']);
-       if ($properties = $request->input('properties'))
+       $properties = $validatedData['properties'] ?? false;
+       if ($properties)
        {
             $products->filterByProperties($properties);
        }
+
 
        return new ProductResponse($products->paginate());
    }
